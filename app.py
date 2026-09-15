@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st#Streamlit helps make a web ui
 import pandas as pd
 import joblib
 
@@ -30,9 +30,9 @@ if st.button("Predict Survival", type="primary"):
 
     passenger = pd.DataFrame({"Pclass": [pclass],"Sex": [sex],"Age": [age],"SibSp": [sibsp],"Parch": [parch],"Fare": [fare]})
 
-    prediction = model.predict(passenger)[0]
+    prediction = model.predict(passenger)[0]#Using the model to predict whether the passenger is likely to survive (1) or not (0)
 
-    probability = model.predict_proba(passenger)[0][1]
+    probability = model.predict_proba(passenger)[0][1]#Getting the probability of survival for the passenger, which is the second element in the array returned by predict_proba
 
     st.divider()
 
@@ -42,6 +42,6 @@ if st.button("Predict Survival", type="primary"):
         st.error("Prediction: Likely Not to Survive")
 
     st.metric(
-        "Probability of Survival",
+        "Probability of Survival",#Shows the actual probability alongside Yes or No answer written above.
         f"{probability:.1%}",
     )
